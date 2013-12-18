@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=2, initial-scale=1, user-scalable=yes" />
+            <title>BHCC</title>
+            <link rel="stylesheet" href="jsmobile/bhcctheme1.css" />
+            
+            <link rel="stylesheet" href="jsmobile/jquery.mobile.structure-1.3.0.min.css" />
+            <script src="jsmobile/jquery-1.9.1.min.js"></script>
+            <script src="jsmobile/jquery.mobile-1.3.0.min.js"></script>
+            <script>
+                $(document).ajaxError(function() {
+                                      var url = "index.html#error";
+                                      window.location = url;
+                                      return false;
+                                      });
+                </script>
+            
+            
+            </head>
+    
+	
+    <body>
+        
+        <!-- Start of first page: #one -->
+        <div data-role="page" id="one" data-theme="a">
+            
+            
+            
+            <div data-role="content"  >
+                <script>
+                    $.mobile.loading( 'show' );
+                    </script>
+                
+                <center><img id="spinappointment" src="spinner_squares_circle.gif" style="display:none" /></center>
+             	<div align="center"><img alt="" src="bhcc-sign.jpg" height="130" width="300"></div><br>
+             	<center><a  href="#aboutus" data-role="button" data-inline="true"  data-transition="fade">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;About Us&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></center>
+             	<center><a  href="#meetdrs" data-role="button" data-inline="true" data-icon="" data-transition="pop">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Meet Our Doctors&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></center>
+                <center><a  href="#concierge" data-role="button" data-inline="true" data-icon="" data-transition="fade">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Concierge&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></center>
+                <center><a  href="#amenities" data-role="button" data-inline="true" data-icon="" data-transition="pop">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Amenities&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></center>
+                <center><a href="#contactus" data-role="button" data-inline="true" data-icon="" data-transition="fade">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contact Us&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></center>
+                <center><a href="#request" data-role="button" data-inline="true" data-icon="" data-transition="pop">&nbsp;Request Appointment&nbsp;&nbsp;</a></center>
+                <center><a href="#mymap" data-role="button" data-inline="true" data-icon="" data-transition="fade">&nbsp;&nbsp;Maps and Directions&nbsp;&nbsp;</a></center>
+                <center><a href="#" onclick="GetAppointments(); return false;" data-role="button" data-inline="true" data-icon="" data-transition="pop">&nbsp;&nbsp;&nbsp;&nbsp;My Appointments&nbsp;&nbsp;&nbsp;&nbsp;</a></center>
+                
+                <center><a href="#login" data-role="button" data-inline="true" data-icon="" data-transition="pop">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login To My Info&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></center>
+                
+                
+            </div><!-- /content -->
+            <center><div data-role="footer" style="text-align:center;" class="ui-bar" data-id="myfooter" data-position="fixed" data-theme="a">
+                <a href="tel:18773510088" data-role="button" data-icon="gear">Click to Call</a>
+                <a href="mailto:info@bhcancercenter.com" data-role="button" data-icon="bars">Email Us</a>
+            </div></center>
+            <!-- /footer -->
+        </div><!-- /page one -->
+        <script>
+            
+            function GetAppointments()
+            {
+                //alert("Send post to appointments.php");
+                
+                $.mobile.loading( 'show', {
+                                 text: "",
+                                 textVisible: true,
+                                 theme: 'a',
+                                 textonly: true,
+                                 html: "<img src='ajax-loader.gif' />&nbsp;&nbsp;&nbsp;&nbsp;Loading...."
+                                 });
+                
+                $.post("http://www.websoftmagic.com/mobile/bhcc/appointments.php",
+                //$.post("appointments.php",
+                       {
+                       username:"demo",
+                       password:"demo"
+                       },
+                       function(data,status){
+                       //alert("got->" + data);
+                       
+                       $.mobile.loading( 'hide' );
+                       if (status == "success") {
+                       if (data == "nosession") {
+                       //alert("Going to Login");
+                       var url = "index.html#login";
+                       window.location = url;
+                       return false;
+                       }
+                       // set appointment data in div
+                       $("#myappointments").html(data);
+                       var url = "index.html#appointments";
+                       window.location = url;
+                       return false;
+                       
+                       } else {
+                       alert ("Sorry, I could not send the request, please call us");
+                       }
+                       });
+            }
+            </script>
+        
+        <!-- Start of aboutus page: #aboutus -->
+        <div data-role="page" id="aboutus" data-theme="a">
+            
+            <div data-role="header">
+                <a href="#one" data-icon="home" data-transition="pop">Back</a>
+                <h1></h1>
+            </div><!-- /header -->
+            
+            <div data-role="content"  >
+                
+                <div align="center"><br><img alt="" src="bhcc-sign.jpg" height="130" width="300"></div>
+                <br><br><b><big><font color="#99953C"><center>Welcome to Beverly Hills Cancer Center</center></big></font><p></b>
+                Cancer has many faces. Our mission is to care for every one of them.
+                We know that being diagnosed with cancer can bring up a host of concerns and you may be feeling overwhelmed. At Beverly Hills Cancer Center, we understand. That is why your comfort and care are most important to our physicians, nurses, imaging specialists, technicians, integrative medicine staff and support staff.  We are committed to providing compassionate cancer care, high-quality state-of-the-art treatment and dedicated clinical research while comforting your body, mind and soul in a healing and supportive environment.<p><br>
+                Centralized integrative services in one convenient location:<br><br>
+                
+                &#8226; Spacious, beautiful chemotherapy center with private infusion rooms<br>
+                &#8226; Innovative radiation oncology center with IMRT, IGRT and SBRT for the highest precision<br>
+                &#8226; State-of-the-art diagnostic imaging center with ACR accredited MRI, CT, PET/CT, Bone Scan, Ultrasound, Bone Density, and Nuclear Studies<br>
+                &#8226; Complete on-site diagnostic laboratory and in-house pharmacy<br>
+                &#8226; Integrative medicine & wellness services<br>
+                &#8226; Groundbreaking research and clinical trials <br>
+                &#8226; Cancer prevention and screening programs customized to each person<br>
+                &#8226; Soothing, spacious center with natural lighting, personal entertainment and caring staff<br>
+                &#8226; Top Cancer Care in the Greater Los Angeles County area<br>
+                
+                <b><big><font color="#99953C"><center>Los Angeles Skin Cancer Institute</center></big></font></b>
+                <p>
+                The Beverly Hills Cancer Center is the home of the Los Angeles Skin Cancer
+                Institute. The Los Angeles Skin Cancer Institute provides skin and cancer care
+                services.
+                
+                
+            </div><!-- /content -->
+            <center><div data-role="footer" style="text-align:center;" class="ui-bar" data-id="myfooter" data-position="fixed" data-theme="a">
+                <a href="tel:18773510088" data-role="button" data-icon="gear">Click to Call</a>
+                <a href="mailto:info@bhcancercenter.com" data-role="button" data-icon="bars">Email Us</a>
+                
+            </div></center>
+            <!-- /footer -->
+        </div><!-- /page aboutus -->
+        
+        <!-- Start of thankyou page: #thankyou -->
+        <div data-role="page" id="thankyou" data-theme="a">
+            
+            <div data-role="header">
+                <a href="#one" data-icon="home" data-transition="pop">Back</a>
+                <h1></h1>
+            </div><!-- /header -->
+            
+            <div data-role="content"  >
+                
+                <div align="center"><br><img alt="" src="bhcc-sign.jpg" height="130" width="300"></div>
+                <br><b>Thank You</b>
+                
+                
+                <p>We have received your request for an appointment at The Beverly Hills Cancer Center.
+                
+                <p>We will contact you as soon as we process your request. This could take up to 24 hours.</b>
+                
+                
+            </div><!-- /content -->
+            <center><div data-role="footer" style="text-align:center;" class="ui-bar" data-id="myfooter" data-position="fixed" data-theme="a">
+                <a href="tel:18773510088" data-role="button" data-icon="gear">Click to Call</a>
+                <a href="mailto:info@bhcancercenter.com" data-role="button" data-icon="bars">Email Us</a>
+            </div></center>
+            <!-- /footer -->
+        </div><!-- /page thankyou -->
+        
+        <!-- Start of error page: #error -->
+        <div data-role="page" id="error" data-theme="a">
+            
+            <div data-role="header">
+                <a href="#one" data-icon="home" data-transition="pop">Back</a>
+                <h1></h1>
+            </div><!-- /header -->
+            
+            <div data-role="content"  >
+                
+                <div align="center"><br><img alt="" src="bhcc-sign.jpg" height="130" width="300"></div>
+                <br><b>There was a problem completing your request.</b>
+                
+                
+                <p>Please make sure that your device is connected to the Internet.
+                
+                <p>Change your settings and try again please.</b>
+                
+                
+            </div><!-- /content -->
+            <center><div data-role="footer" style="text-align:center;" class="ui-bar" data-id="myfooter" data-position="fixed" data-theme="a">
+                <a href="tel:18773510088" data-role="button" data-icon="gear">Click to Call</a>
+                <a href="mailto:info@bhcancercenter.com" data-role="button" data-icon="bars">Email Us</a>
+            </div></center>
+            <!-- /footer -->
+        </div><!-- /page error -->
+        
+        
+        <!-- Start of appointments page: #appointments -->
+        <div data-role="page" id="appointments" data-theme="a">
+            
+            <div data-role="header">
+                <a href="#one" data-icon="home" data-transition="pop">Back</a>
+                <h1></h1>
+            </div><!-- /header -->
+            
+            <div data-role="content"  >
+                <ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="a">
+                    <li data-role="divider" data-theme="b">My Appointments</li>
+    				<div id="myappointments" ></div>
+        		</ul>
+                
+            </div><!-- /content -->
+            <center><div data-role="footer" style="text-align:center;" class="ui-bar" data-id="myfooter" data-position="fixed" data-theme="a">
+                <a href="tel:18773510088" data-role="button" data-icon="gear">Click to Call</a>
+                <a href="mailto:info@bhcancercenter.com" data-role="button" data-icon="bars">Email Us</a>
+            </div></center>
+            <!-- /footer -->
+        </div><!-- /page appointments -->
+        
+        <!-- Start of meetdrs page: #meetdrs -->
+        <div data-role="page" id="meetdrs" data-theme="a">
+            
+            <div data-role="header">
+                <a href="#one" data-icon="home" data-transition="pop">Back</a>
+                <h1></h1>
+            </div><!-- /header -->
+            
+            <div data-role="content"  >
+                <ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="a">
+                    <li data-role="divider" data-theme="b">Our Doctors</li>
+    				<li><a href="#drlc" data-transition="slide">
+        				<img src="drlc.jpg">
+                            <h2>Linnea I. Chap, M.D.</h2>
+                            <p>Hematology/Oncology (Womens Oncology)</p></a>
+    				</li>
+    				
+                    <li><a href="#drag" data-transition="slide">
+        				<img src="drag.jpg">
+                            <h2>A. Eli Gabayan, M.D. (Afshin Eli Gabayan, MD)</h2>
+                            <p>Medical Director - Beverly Hills Cancer Center</p></a>
+    				</li>
+    				
+    				<li><a href="#drso" data-transition="slide">
+        				<img src="drso.jpg">
+                            <h2>Steven J. O&#8217;Day, M.D.</h2>
+                            <p>Director of Los Angeles Skin Cancer Institute </p></a>
+    				</li>
+    				
+    				<li><a href="#drag2" data-transition="slide">
+        				<img src="drag2.jpg">
+                            <h2>Ari Gabayan, M.D. </h2>
+                            <p>Radiation Oncology</p></a>
+    				</li>
+    				
+    				<li><a href="#drpg" data-transition="slide">
+        				<img src="drpg.jpg">
+                            <h2>Patricia Gordon, MD </h2>
+                            <p>Radiation Oncology</p></a>
+    				</li>
+    				
+    				<li><a href="#drpp" data-transition="slide">
+        				<img src="drpp.jpg">
+                            <h2>Paul Pagnini, MD</h2>
+                            <p>Radiation Oncology</p></a>
+    				</li>
+    				
+    				<li><a href="#drlv" data-transition="slide">
+        				<img src="drlv.jpg">
+                            <h2>Lindi Vanderwalde, M.D.</h2>
+                            <p>Breast Surgery/General Surgery</p></a>
+    				</li>
+                    
+    				<li><a href="#drjl" data-transition="slide">
+        				<img src="drjl.jpg">
+                            <h2>Jennifer Lang, M.D.</h2>
+                            <p>Gynecologic Oncology/Surgery</p></a>
+    				</li>
+    				
+                    <li><a href="#drpf" data-transition="slide">
+        				<img src="drpf.jpg">
+                            <h2>Peter Foldvary, M.D.</h2>
+                            <p>Radiology</p></a>
+    				</li>
+    				
+    				<li><a href="#drrt" data-transition="slide">
+        				<img src="drrt.jpg">
+                            <h2>Ramona Tabib, M.D.</h2>
+                            <p>Radiology</p></a>
+    				</li>
+    				
+                    
+        		</ul>
+                
+            </div><!-- /content -->
+            <center><div data-role="footer" style="text-align:center;" class="ui-bar" data-id="myfooter" data-position="fixed" data-theme="a">
+                <a href="tel:18773510088" data-role="button" data-icon="gear">Click to Call</a>
+                <a href="mailto:info@bhcancercenter.com" data-role="button" data-icon="bars">Email Us</a>
+            </div></center>
+            <!-- /footer -->
+        </div><!-- /page meetdrs -->
+        
+        <!-- Start of drlc page: #drlc -->
+        <div data-role="page" id="drlc">
+            
+            <div data-role="header">
+                <a href="#meetdrs" data-icon="home" data-transition="pop">Back</a>
+                <h1></h1>
+            </div><!-- /header -->
+            
+            <div data-role="content" data-theme="a" >
+                <img alt="" src="drlc.jpg">
+                    <br><br><b>Linnea I. Chap, M.D.</b>
+                    <p>
+                    Linnea Chap, MD is a highly respected specialist in breast cancer and gynecologic malignancies.  She received her B.S. in Chemistry from the University of Illinois and graduated Summa Cum Laude with High Honors.  She subsequently received her medical degree from the University of Chicago, Pritzker School of Medicine.  Dr. Chap completed residency in internal medicine at Northwestern Memorial Hospital and fellowships in both hematology and oncology at the UCLA Medical Center. After her fellowship, she joined the UCLA faculty where she was promoted to Associate Professor of Medicine and was the co-director of the UCLA/Revlon Multidisciplinary Breast Clinic.  Dr. Chap has numerous publications to her credit in highly regarded peer review journals.  She has been a leader in the treatment and research of breast and gynecological malignancies and has led several breast and ovarian cancer treatment protocols, including the pioneering use of novel biologic agents such as Herceptin and Avastin.
+                    <p>
+                    Dr. Chap has received several prestigious awards throughout her career.  In 2001, she was named one of America's Top Breast Cancer Doctors by Redbook, a national women's magazine.  Annually, she is listed as one of "America's Top Doctors for Cancer."  Recognized for her teaching and speaking skills, Dr. Chap is frequently called upon to relate the most recent advances in breast cancer treatment.  In addition to her active involvement with clinical trials and research, she is well-versed in the areas of risk reduction and genetic testing.
+                    <p>
+                    U.S. News Media Group recently announced U.S. News Top Doctors. A highly respected specialist in breast cancer and gynecologic malignancies, Dr. Linnea Chap is listed in this prestigious directory and considered among the top 1% of doctors in the country.   Dr. Chap was also listed in Los Angeles Magazine in January 2012, under the listing for Top Doctors in Los Angeles.  She has also been selected to Southern California Super Doctors annually, since 2007.
+                    </div><!-- /content -->
+            <center><div data-role="footer" style="text-align:center;" class="ui-bar" data-id="myfooter" data-position="fixed" data-theme="a">
+                <a href="tel:18773510088" data-role="button" data-icon="gear">Click to Call</a>
+                <a href="mailto:info@bhcancercenter.com" data-role="button" data-icon="bars">Email Us</a>
+            </div></center>
+            <!-- /footer -->
+        </div><!-- /drlc -->
+        
+        <!-- Start of drag page: #drag -->
+        <div data-role="page" id="drag">
+            
+            <div data-role="header">
+                <a href="#meetdrs" data-icon="home" data-transition="pop">Back</a>
+                <h1></h1>
+            </div><!-- /header -->
+            
+            <div data-role="content" data-theme="a" >
+                <img alt="" src="drag.jpg">
+                    <br><br><b>Afshin Eli Gabayan, MD</b>
+                    
+                    <p>
+                    Dedicated to providing the best available therapies to his patients, Dr. A. Eli Gabayan (Afshin Eli Gabayan) has remained avidly involved in multiple cancer research studies and clinical trials throughout a career that began at the prestigious University of Southern California (USC) School of Medicine. Dr. Gabayan completed his internship and residency at University of California, Los Angeles (UCLA) where he also served as Chief Resident. He received his Oncology and Hematology training at Cedars-Sinai Medical Center, where he remained as an attending physician in private practice with expertise in the areas of gastrointestinal, lung, breast cancers and multiple myeloma. Dr. Gabayan is board certified by the American Board of Internal Medicine, with a subspecialty in Medical Oncology.
+                    <p>
+                    Dr. Eli Gabayan tirelessly strives for the best and most current treatments medical science can offer to his patients and their families. This passion for knowledge and education led to Dr. Gabayans post as a clinical instructor at the esteemed David Geffen School of Medicine at UCLA. Firmly committed to the community, Dr. Gabayan maintains strong local ties through his frequent lectures on a wide variety of oncology and hematology topics.
+                    <p>
+                    At the heart of Dr. Gabayans practice is a passionate advocacy for the advancement of medical research for all cancer patients coupled with a vigilant dedication to making the latest therapy and treatment options available to his own patients.  He believes that knowledge is power and communication is essential to good patient care. As the Chief of Medical Oncology at the Beverly Hills Cancer Center, Dr. A. Eli Gabayan has made it a personal goal to deliver compassionate, yet state of the art care in a healing environment.
+                    </div><!-- /content -->
+            <center><div data-role="footer" style="text-align:center;" class="ui-bar" data-id="myfooter" data-position="fixed" data-theme="a">
+                <a href="tel:18773510088" data-role="button" data-icon="gear">Click to Call</a>
+                <a href="mailto:info@bhcancercenter.com" data-role="button" data-icon="bars">Email Us</a>
+            </div></center>
+            <!-- /footer -->
+        </div><!-- /drag -->
+        
+        <!-- Start of drpb page: #drso -->
+        <div data-role="page" id="drso" data-theme="a" >
+            
+            <div data-role="header">
+                <a href="#meetdrs" data-icon="home" data-transition="pop">Back</a>
+                <h1></h1>
+            </div><!-- /header -->
+            
+            <div data-role="content" >
+                <img alt="" src="drso.jpg">
+                    <br><br><b>Steven J. O&#8217;Day, M.D.</b>
+                    
+                    <p>
+                    Steven J. O&#8217;Day, MD is a board-certified medical oncologist at Beverly Hills Cancer Center. Dr. O&#8217;Day is a graduate of Williams College with a BA in Chemistry. Following college, he studied medical ethics at Oxford University on a visiting scholars program. He returned to the US to attended medical school at Johns Hopkins and completed his medical internship and residency in Internal Medicine on the Osler Service at Hopkins. He completed his fellowship medical oncology at Dana Farber Cancer Institute at Harvard University, including specialized training in hematologic malignancies and bone marrow transplantation. Dr. O&#8217;Day also completed a Clinical Effectiveness Program at the Harvard School of Public Health. In 1994, after serving as an Attending Physician at Dana Farber, Dr. O&#8217;Day came to Los Angeles to found the Medical Oncology Division of The John Wayne Cancer Institute in partnership with the world-class Surgical Oncology Faculty and melanoma experts of The John Wayne Cancer Institute. More recently, he was a founding member of The Angeles Clinic and Research Institute in Santa Monica, California.
+                    <p>
+                    Dr. O&#8217;Day is recognized as one of the preeminent melanoma specialists in the world, and combines expert clinical care with teaching and leading clinical research. He lectures extensively, both nationally and internationally. His research has focused for many years on the combination of chemotherapy and immunotherapy in the treatment of metastatic melanoma. He has been at the forefront of new drug development in melanoma over the last two decades. His recent research has concentrated on T-cell targeted antibodies, targeted MAPK inhibitors and anti-angiogenesis drugs. Dr. O&#8217;Day has been a principal investigator on over 100 clinical trials including several large, international Phase III trials. He has published more than 200 manuscripts, abstracts and reviews in prestigious journals such as The New England Journal of Medicine (NEJM), Journal of Clinical Oncology (JCO), Blood, Journal of American Medical Association (JAMA), Cancer, Lancet Oncology and the Journal of the National Cancer Institute. He serves on the editorial boards and as a reviewer for many prestigious journals including JCO and Clinical Cancer Research. Dr. O&#8217;Day has served on the ASCO Education Committee for melanoma. In addition, he has served on the ASCO International Development and Education Award (IDEA) Working Group where he has served as a mentor for an IDEA grant recipient as well as an IDEA grant reviewer.
+                    <p>
+                    Over the last two years, Dr. O&#8217;Day has made a significant contribution to melanoma treatment and research, playing key roles in the research that led to the FDA approval of two new drugs (ipilimumab, vemurafenib) for the treatment of metastatic melanoma. Both drugs have demonstrated an overall survival benefit in large, randomized clinical trials. As a result of this work, Dr. O&#8217;Day has been a co-author on three recent New England Journal of Medicine papers. Each of these papers has been honored with presentation at ASCO&#8217;s Plenary sessions, at the 2010 and 2011 meetings. Dr. O&#8217;Day was a co-first author on the first of these papers (ipilimumab) and gave the 2010 ASCO Plenary oral presentation. This landmark paper represented the first study to demonstrate improvement in overall survival for patients with refractory metastatic melanoma. The second ipilimumab study confirmed this survival benefit as first line therapy in metastatic melanoma and was presented at the 2011 ASCO Plenary session by co-investigator, Dr. Jedd Wolchuk. The third study demonstrated an improvement in survival with a second drug (vemurafenib), a novel BRAF-targeted oral agent for patients with BRAF-mutated metastatic melanoma. This third paper was presented by co-investigator Dr. Paul Chapman at the 2011 ASCO Plenary session.
+                    <p>
+                    Inspired by the recent significant breakthroughs in the treatment of melanoma, Dr. O&#8217;Day&#8217;s remains dedicated to patient care, clinical research and drug development in the treatment of melanoma. He is interested in expanding the success of tumor immunology in melanoma more broadly across oncologic tumors. He is confident that strategic combinational approaches based on high quality translational science, rigorous clinical research design and critical biomarker discovery, will lead to significant new advances in oncology in the coming years.
+                    
+                    </div><!-- /content -->
+            <center><div data-role="footer" style="text-align:center;" class="ui-bar" data-id="myfooter" data-position="fixed" data-theme="a">
+                <a href="tel:18773510088" data-role="button" data-icon="gear">Click to Call</a>
+                <a href="mailto:info@bhcancercenter.com" data-role="button" data-icon="bars">Email Us</a>
+            </div></center>
+            <!-- /footer -->
+        </div><!-- /drpb -->
+        
+        <!-- Start of drag2 page: #drag2 -->
+        <div data-role="page" id="drag2" data-theme="a" >
+            
+            <div data-role="header">
+                <a href="#meetdrs" data-icon="home" data-transition="pop">Back</a>
+                <h1></h1>
+            </div><!-- /header -->
+            
+            <div data-role="content" >
+                <img alt="" src="drag2.jpg">
+                    <br><br><b>Ari Gabayan, M.D.</b>
+                    
+                    <p>An advocate for compassionate care who passionately pursues cutting edge research, Dr. Ari Gabayan (Arash "Ari" Gabayan) comes to his patients with extensive medical knowledge. He attended the University of California, Los Angeles (UCLA) as a Neuroscience major. After receiving several prestigious awards and academic scholarships as an undergraduate, including the University of California Regents Scholarship, Dr. Gabayan graduated Summa Cum Laude and College Honors, with a B.S. in Neuroscience. Dr. Gabayan went onto pursue his medical degree from UCLA&#8217;s renowed David Geffen School of Medicine. He continued his medical training with a medical internship at University of California, San Francisco (UCSF), and a residency at University of Arizona&#8217;s Department of Radiation Oncology, where he held the esteemed position of Chief Resident.
+                    <p>
+                    Recognition of Dr. Ari Gabayan&#8217;s pursuit and achievement of excellence lead to his selection as Lead Investigator for a national multi-institutional study of the GliaSite Radiotherapy System, a device used in the treatment of malignant brain tumors. Dr. Gabayan&#8217;s research studies earned him the prominent Roentgen Research Award.
+                    <p>
+                    As the Chief of Radiation Oncology and Imaging at the Beverly Hills Cancer Center, Dr. Ari Gabayan strives to provide his patients with the latest treatment technologies in a soothing and relaxing environment. Dr. Gabayan dedicates himself to the highest standards in all aspects of his career, from the care and treatment of patients to the pursuit of cutting-edge research.
+                    </div><!-- /content -->
+            <center><div data-role="footer" style="text-align:center;" class="ui-bar" data-id="myfooter" data-position="fixed" data-theme="a">
+                <a href="tel:18773510088" data-role="button" data-icon="gear">Click to Call</a>
+                <a href="mailto:info@bhcancercenter.com" data-role="button" data-icon="bars">Email Us</a>
+            </div></center>
+            <!-- /footer -->
+        </div><!-- /drcc -->
+        
+        <!-- Start of drpg page: #drpg -->
+        <div data-role="page" id="drpg" data-theme="a" >
+            
+            <div data-role="header">
+                <a href="#meetdrs" data-icon="home" data-transition="pop">Back</a>
+                <h1></h1>
+            </div><!-- /header -->
+            
+            <div data-role="content" >
+                <img alt="" src="drpg.jpg">
+                    <br><br><b>Patricia Gordon, MD</b>
+                    <p>
+                    Dr. Gordon is a 1978 graduate of Harvard University with a Bachelor of Arts in Biology. She went on to receive her degree of Doctor of Medicine at the University of California at Los Angeles in 1982. She completed a residency in Internal Medicine at Cedars-Sinai Medical Group in 1984 following which she returned to UCLA for her training in Radiation Oncology which she completed in 1987, serving one year as Chief Resident. In 1987 Dr. Gordon achieved Board Certification in Radiation Oncology from the American Board of Radiology. She remained on the UCLA clinical faculty through 2003.
+                    <p>
+                    Dr. Gordon enjoys the general practice of Radiation Oncology with a particular passion for breast and prostate cancer management. Over the past 20 years she has devoted a great deal of her life to helping patients with HIVrelated malignancies. She prides herself on having twice completed the 560-mile bicycle ride from San Francisco to Los Angeles, which is part of the California AIDS Ride.
+                    <p>
+                    Founding Director and board Chair of Cure Cervical Cancer, Dr. Gordon is passionate about devoting her time and medical expertise to healthcare projects in developing countries. Dr. Gordon and her colleagues are dedicated to the early detection, treatment and cure of cervical cancer in developing countries worldwide. For additional information on the foundation and upcoming projects, please visit their website: www.curecervicalcancer.org.
+                    
+                    </div><!-- /content -->
+            <center><div data-role="footer" style="text-align:center;" class="ui-bar" data-id="myfooter" data-position="fixed" data-theme="a">
+                <a href="tel:18773510088" data-role="button" data-icon="gear">Click to Call</a>
+                <a href="mailto:info@bhcancercenter.com" data-role="button" data-icon="bars">Email Us</a>
+            </div></center>
+            <!-- /footer -->
+        </div><!-- /drpg -->
+        
+        <!-- Start of drpp page: #drpp -->
+        <div data-role="page" id="drpp" data-theme="a" >
+            
+            <div data-role="header">
+                <a href="#meetdrs" data-icon="home" data-transition="pop">Back</a>
+                <h1></h1>
+            </div><!-- /header -->
+            
+            <div data-role="content" >
+                <img alt="" src="drpp.jpg">
+                    <br><br><b>Paul Pagnini, MD </b>
+                    <p>
+                    Dr. Paul G. Pagnini has served as a leader in community-based and academic radiation oncology for the past 14 years. An expert in Gamma Knife and CyberKnife radiosurgery, prior to joining Beverly Hills Cancer Center he served as an interim chairman for the Department of Radiation Oncology at USC and as the former Medical Director of Radiation Oncology Services at the NCI-Designated USC Norris Comprehensive Cancer Center. Dr. Pagnini also served as program director for the LAC + USC Radiation Oncology Residency Program, a position which he proudly held for 6 years. Prior to joining USC he was the Medical Director of Radiation Oncology Services at the Saint Bernardine Medical Center, where he was the liaison to the American College of Surgeons, Commission on Cancer. Dr. Pagnini has performed over 800 Gamma Knife and CyberKnife radiosurgical procedures.
+                    <p>
+                    Dr. Pagnini completed his residency training in radiation oncology at Tufts/New England Medical Center where he was chief resident in his final year. He was awarded the prestigious Research Fellowship Award from the American Society of Therapeutic Radiation Oncology, which enabled him to study the role of intensity modulated radiation therapy (IMRT) for the treatment of cancers of the central nervous system. He has appeared several times on CBS The Doctors as a Radiation Expert and Brain Tumor Specialist, as well as, many local and national news segments pertaining to his area of expertise. He has multiple peer reviewed publications in the areas of intensity modulated radiation therapy (IMRT), 3-D conformal radiation therapy, Cyberknife, and Gamma-Knife radiosurgery.
+                    <p>
+                    His clinical expertise includes brain and spinal cord tumors, orbital and ocular tumors, brain and spine metastases, gastrointestinal tumors (esophageal, gastric, colorectal, and anal cancers), pancreatic cancer, hepatobiliary cancers (liver and bile duct cancers); benign intracranial tumors (meningiomas, pituitary tumors, acoustic neuromas, and arterio-venous malformations), and genitourinary tumors including prostate cancer.
+                    </div><!-- /content -->
+            <center><div data-role="footer" style="text-align:center;" class="ui-bar" data-id="myfooter" data-position="fixed" data-theme="a">
+                <a href="tel:18773510088" data-role="button" data-icon="gear">Click to Call</a>
+                <a href="mailto:info@bhcancercenter.com" data-role="button" data-icon="bars">Email Us</a>
+            </div></center>
+            <!-- /footer -->
+        </div><!-- /drrp -->
+        
+        <!-- Start of drlv page: #drlv -->
+        <div data-role="page" id="drlv" data-theme="a" >
+            
+            <div data-role="header">
+                <a href="#meetdrs" data-icon="home" data-transition="pop">Back</a>
+                <h1></h1>
+            </div><!-- /header -->
+            
+            <div data-role="content" >
+                <img alt="" src="drlv.jpg">
+                    <br><br><b>Lindi Vanderwalde, M.D.</b>
+                    <p>
+                    Lindi Vanderwalde, MD is board certified in general surgery with fellowship training in breast surgery. Dr. Vanderwalde received her BA in Biology at Columbia College in New York City. She earned her medical degree at the prestigious University of Pennsylvania School of Medicine. Returning to Los Angeles, Dr. Vanderwalde completed her residency in General Surgery at Kaiser Permanente Los Angeles Medical Center, a high-volume tertiary referral center. Dr. Vanderwalde is board certified by the American Board of Surgery and is a member of the American Society of Breast Surgeons and the American College of Surgeons.
+                    <p>
+                    Recognizing the need for dedicated breast specialists, Dr. Vanderwalde pursued a fellowship at Cedars-Sinai Medical Center where she specialized in the surgical treatment of diseases of the breast. Dr. Vanderwalde strives to deliver compassionate and comprehensive care to patients with new breast concerns. With her meticulous surgical skill, she obtains cosmetic excellence by utilizing oncoplastic techniques, and offering patients immediate reconstruction with skin sparing and nipple sparing mastectomy when oncologically feasible. Dr. Vanderwalde is excited to be a part of the Beverly Hills Health Center, where patients with breast cancer receive integrated multidisciplinary care from the surgical, radiation, and medical oncology teams.
+                    
+                    </div><!-- /content -->
+            <center><div data-role="footer" style="text-align:center;" class="ui-bar" data-id="myfooter" data-position="fixed" data-theme="a">
+                <a href="tel:18773510088" data-role="button" data-icon="gear">Click to Call</a>
+                <a href="mailto:info@bhcancercenter.com" data-role="button" data-icon="bars">Email Us</a>
+            </div></center>
+            <!-- /footer -->
+        </div><!-- /drlv -->
+        
+        <!-- Start of drms page: #drjl -->
+        <div data-role="page" id="drjl" data-theme="a" >
+            
+            <div data-role="header">
+                <a href="#meetdrs" data-icon="home" data-transition="pop">Back</a>
+                <h1></h1>
+            </div><!-- /header -->
+            
+            <div data-role="content" >
+                <img alt="" src="drjl.jpg">
+                    <br><br><b>Jennifer Lang, M.D.</b>
+                    <p>
+                    Jennifer Lang, MD focuses on providing comprehensive individualized care for women with gynecologic and oncologic concerns. Dr. Lang has extensive experience in advanced minimally-invasive surgical techniques including laparoscopy and robotic surgery.
+                    
+                    Dr. Lang received her medical education at Albert Einstein College of Medicine in New York, where she received the prestigious Dean#8217;s Recognition Award for "Holding Promise for the Future of Medicine." She then completed a four-year residency in Obstetrics and Gynecology at St. Luke#8217;s-Roosevelt Hospital Center of Columbia University College of Physicians and Surgeons in New York City, winning the Berlex Award for Best Teaching Resident, and elected Administrative Chief Resident for her program.
+                    
+                    Dr. Lang was also a visiting Galloway Fellow at Memorial Sloane Kettering Cancer Center, followed by a three-year fellowship in Gynecologic Oncology (Women#8217;s Cancer Surgery) at UCLA and Cedars-Sinai Medical Centers in Los Angeles, California. During this training, she had extensive experience in advanced minimally-invasive surgical techniques including laparoscopy and robotic surgery. During her final year of fellowship she was concurrently enrolled in a Doctoral Program in Biomedical Science and Translational Research focusing on the field of ovarian cancer. She was the recipient of the Ovarian Cancer Research Foundation#8217;s "Program of Excellence Award", and the Marsha Rivkin Center for Ovarian Cancer Research "Scientific Scholar Award." Following fellowship, Dr Lang spent three years as Medical Director of "FLOW: Integrative Women's Wellness Practice," providing holistic comprehensive individualized care for women with gynecologic and oncologic concerns.
+                    
+                    Dr. Lang has moved her practice to Beverly Hills Health Center, where she will continue her dedication to patient care at the Center#8217;s integrative Women#8217;s Oncology Division, alongside renowned specialists in the fields of surgery, hematology/oncology, and radiation oncology.
+                    
+                    </div><!-- /content -->
+            <center><div data-role="footer" style="text-align:center;" class="ui-bar" data-id="myfooter" data-position="fixed" data-theme="a">
+                <a href="tel:18773510088" data-role="button" data-icon="gear">Click to Call</a>
+                <a href="mailto:info@bhcancercenter.com" data-role="button" data-icon="bars">Email Us</a>
+            </div></center>
+            <!-- /footer -->
+        </div><!-- /drjl -->
+        
+        <!-- Start of drpf page: #drpf -->
+        <div data-role="page" id="drpf" data-theme="a" >
+            
+            <div data-role="header">
+                <a href="#meetdrs" data-icon="home" data-transition="pop">Back</a>
+                <h1></h1>
+            </div><!-- /header -->
+            
+            <div data-role="content" >
+                <img alt="" src="drpf.jpg">
+                    <br><br><b>Peter Foldvary, M.D.</b>
+                    <p>
+                    Peter Foldvary, M.D. is board certified by the American Board of Radiology and by the American Board of Nuclear Medicine. He received his B.S., M.S., and M.D. degrees from the University of Toronto, and completed his internship at Harbor General Hospital, his residency in diagnostic radiology at UCLA, and his residency in nuclear medicine at UCLA / Wadsworth. He participated in hospital based and outpatient practices in West Los Angeles, then was director of imaging centers in the Long Beach area. He is a member of the Radiological Society of North America, the American Roentgen Ray Society, and the Los Angeles Radiological Society.
+                    
+                    </div><!-- /content -->
+            <center><div data-role="footer" style="text-align:center;" class="ui-bar" data-id="myfooter" data-position="fixed" data-theme="a">
+                <a href="tel:18773510088" data-role="button" data-icon="gear">Click to Call</a>
+                <a href="mailto:info@bhcancercenter.com" data-role="button" data-icon="bars">Email Us</a>
+            </div></center>
+            <!-- /footer -->
+        </div><!-- /drpf -->
+        
+        <!-- Start of drrt page: #drrt -->
+        <div data-role="page" id="drrt" data-theme="a" >
+            
+            <div data-role="header">
+                <a href="#meetdrs" data-icon="home" data-transition="pop">Back</a>
+                <h1></h1>
+            </div><!-- /header -->
+            
+            <div data-role="content" >
+                <img alt="" src="drrt.jpg">
+                    <br><br><b>Ramona Tabib, M.D.</b>
+                    <p>
+                    Biography coming soon.
+                    
+                    </div><!-- /content -->
+            <center><div data-role="footer" style="text-align:center;" class="ui-bar" data-id="myfooter" data-position="fixed" data-theme="a">
+                <a href="tel:18773510088" data-role="button" data-icon="gear">Click to Call</a>
+                <a href="mailto:info@bhcancercenter.com" data-role="button" data-icon="bars">Email Us</a>
+            </div></center>
+            <!-- /footer -->
+        </div><!-- /drrt -->
+        
+        <!-- Start of concierge page: #concierge -->
+        <div data-role="page" id="concierge" data-theme="a">
+            
+            <div data-role="header">
+                <a href="#one" data-icon="home" data-transition="pop">Back</a>
+                <h1></h1>
+            </div><!-- /header -->
+            
+            <div data-role="content"  >
+                <div align="center"><img alt="" src="bhcc-sign.jpg" height="130" width="300"></div>
+                
+                <br><br><b><big><font color="#99953C"><center>Concierge Medical Services</center></big></font></b><br>
+                
+                
+                
+                
+                At Beverly Hills Health Center we offer personalized concierge medical services
+                catered to each person&#8217;s specific needs. Whether you have traveled to our Center
+                internationally or live locally, our concierge medical services will meet your
+                individual preferences and needs - and enhance your care to the highest level.
+                
+                Some benefits of our exclusive concierge medical services include:
+                <br>
+                <br>&bull; 24/7 access to your concierge physician, by cell phone and email
+                <br>&bull; Physician consultations, medical testing and treatment at your home, hotel,
+                or workplace, for increased convenience and privacy
+                <br>&bull; Same day appointments, service and treatment (including after hours and
+                weekends)
+                <br>&bull; Extended visits with your physician
+                <br>&bull; Same day results (including full imaging and laboratory tests)
+                <br>&bull; Comprehensive, efficient treatment services
+                <br>&bull; Preventive medicine
+                <br>&bull; Customized physicals and health screenings geared to each person based on
+                their personal risk factors (including medical history,  family and genetic
+                history, and lifestyle)
+                <br><br>
+                For traveling and international patients, in addition to offering the top
+                destination medical care, we also provide other concierge services including:
+                <br>
+                <br>&bull; Private limousine and transportation services from your hotel
+                <br>&bull; Discounted rates at local, high end hotels and residences
+                <br>&bull; Assistance with booking hotels, airfare and other travel arrangements
+                <br>&bull; Entertainment ideas for patients, as well as for visiting family and friends
+                
+                For more information on our concierge medical services in the Greater Los
+                Angeles County area of Southern California, please contact Heather Grant at
+                (877) 351-0088.
+              	
+                
+            </div><!-- /content -->
+            <center><div data-role="footer" style="text-align:center;" class="ui-bar" data-id="myfooter" data-position="fixed" data-theme="a">
+                <a href="tel:18773510088" data-role="button" data-icon="gear">Click to Call</a>
+                <a href="mailto:info@bhcancercenter.com" data-role="button" data-icon="bars">Email Us</a>
+            </div></center>
+            <!-- /footer -->
+        </div><!-- /page concierge -->
+        
+        <!-- Start of amenities page: #amenities -->
+        <div data-role="page" id="amenities" data-theme="a">
+            
+            <div data-role="header">
+                <a href="#one" data-icon="home" data-transition="pop">Back</a>
+                <h1></h1>
+            </div><!-- /header -->
+            
+            <div data-role="content"  >
+                <div align="center"><img alt="" src="bhcc-sign.jpg" height="130" width="300"></div>
+                
+                <p>
+                <b><big><big><font color="#99953C"><center>Amenities</center></big></big></font></b>
+                
+                <p><br>
+                <b>So much more than your typical healthcare facility.</b>
+                <p>
+                We have established a whole new standard of patient care. It&#8217;s a standard that
+                you cannot find anywhere else.
+                <p>
+                In addition to Beverly Hills Cancer Center&#8217;s soothing, spacious treatment areas
+                and facility filled with natural light, we offer patients a multitude of
+                amenities to enhance the patient experience. Even the furnishings have been
+                custom-made for the ultimate human comfort. In fact, we&#8217;ve established a whole
+                new standard of human comfort for patients. It&#8217;s a standard that you cannot find
+                anywhere else. Some of our amenities include:
+                <p>
+                
+                <b><big><font color="#99953C">Energíe Café</big></font></b>
+                
+                <p>
+                Our on-site café with organic teas and coffees, smoothies, gourmet pastries,
+                sandwiches, drinks and other snacks make any time you stay at Beverly Hills
+                Cancer Center more convenient, enjoyable and refreshing.
+                
+                <p>
+                <b><big><font color="#99953C">Private Infusion Rooms</big></font></b>
+                <p>
+                In addition to our soothing, spacious infusion areas with calming music and
+                natural light, we also have private infusion rooms equipped with computers and
+                plasma TVs for patients and their families who prefer a more private setting.
+                
+                <p>
+                <b><big><font color="#99953C">Wireless Internet</big></font></b>
+                <p>
+                We provide personal computer stations with Internet access for patients and
+                their families. This can make your time at Beverly Hills Cancer Center more
+                enjoyable, more comfortable and more educational.
+                
+                <p>
+                <b><big><font color="#99953C">Zen Patio</big></font></b>
+                <p>
+                The calming Zen patio offers beautiful views of Beverly Hills and the Hollywood
+                Hills. It&#8217;s a restful place where patients can relax with family and friends
+                while receiving chemotherapy treatments.
+                <p>
+                
+                <b><big><font color="#99953C">Valet Parking</big></font></b>
+                <p>
+                Valet parking is provided as a convenience for all patients. Our goal is to
+                remove as many of your day-to-day concerns, stresses and worries as we can so
+                you and your family can focus on returning to good health.
+                
+            </div><!-- /content -->
+            <center><div data-role="footer" style="text-align:center;" class="ui-bar" data-id="myfooter" data-position="fixed" data-theme="a">
+                <a href="tel:18773510088" data-role="button" data-icon="gear">Click to Call</a>
+                <a href="mailto:info@bhcancercenter.com" data-role="button" data-icon="bars">Email Us</a>
+            </div></center>
+            <!-- /footer -->
+        </div><!-- /amenities -->
+        
+        <!-- Start of contactus page: #contactus -->
+        <div data-role="page" id="contactus" data-theme="b">
+            
+            <div data-role="header">
+                <a href="#one" data-icon="home" data-transition="pop">Back</a>
+                <h1></h1>
+            </div><!-- /header -->
+            
+            <div data-role="content">
+                
+                
+                <center><img alt="" src="bhcc.jpg" height="160" width="160">
+                    <p>
+                    <b>BEVERLY HILLS CANCER CENTER</b><br>
+                    (Main Facility, in Beverly Hills, CA)<br>
+                    8900 Wilshire Boulevard<br>
+                    Beverly Hills, California 90211<br>
+                    <a href="tel:18773510088">(877) 351-0088</a><br>
+                    Fax: (310) 432-8901<br>
+                    
+                    <p>
+                    <b>Los Angeles Skin Cancer Institute </b><br>
+                    (at Beverly Hills Cancer Center)<br>
+                    8900 Wilshire Boulevard<br>
+                    Beverly Hills, California 90211<br>
+                    <a href="tel:18773510088">(877) 351-0088</a><br>
+                    Fax: (310) 432-8901<br>
+                    </center>
+              	
+                
+            </div><!-- /content -->
+            <center><div data-role="footer" style="text-align:center;" class="ui-bar" data-id="myfooter" data-position="fixed" data-theme="a">
+                <a href="tel:18773510088" data-role="button" data-icon="gear">Click to Call</a>
+                <a href="mailto:info@bhcancercenter.com" data-role="button" data-icon="bars">Email Us</a>
+            </div></center>
+            <!-- /footer -->
+        </div><!-- /page contactus -->
+        
+        <!-- Start of request page: #request -->
+        <div data-role="page" id="request" data-theme="a">
+            <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+            <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+            <style type="text/css">
+                #ui-datepicker-div
+                {
+                    z-index: 9999999;
+                }
+                </style>
+            <script>
+                $(function() {
+                  $( "#datepicker" ).datepicker();
+                  });
+                </script>
+            <script>
+                function myFunction()
+                {
+                    var newpat = "";
+                    
+                    if(document.getElementById("radio-view-a").checked == true)
+                    {
+                        newpat = "Existing Patient";
+                    }
+                    if(document.getElementById("radio-view-b").checked == true)
+                    {
+                        newpat = "New Patient";
+                    }
+                    var message = "";
+                    var name2 = $('#name2').val();
+                    var tel = $('#tel').val();
+                    //var newpat = $('#newpat').val();
+                    var email = $('#email').val();
+                    var datepicker = $('#datepicker').val();
+                    var timea = $('#timea').val();
+                    var doctor = $('#doctor').val();
+                    var textarea2 = $('#textarea2').val();
+                    if (newpat==null || newpat=="unknown") { message = message + "Please indicate if you are an existing patient\n"; }
+                    if (name2==null || name2=="") { message = message + "Name is a required field\n"; }
+                    if (tel==null || tel=="") { message = message + "Telephone number is a required field\n"; }
+                    if (email==null || email=="") { message = message + "Email is a required field\n"; }
+                    if (datepicker==null || datepicker=="unknown") { message = message + "Appointment Date is a required field\n"; }
+                    if (timea==null || timea=="unknown") { message = message + "Appointment Time is a required field\n"; }
+                    if (doctor==null || doctor=="unknown") { message = message + "Doctor is a required field\n"; }
+                    if (message != "") {
+                        alert(message);
+                        return false;
+                    }
+                    $.mobile.loading( 'show', {
+                                     text: "",
+                                     textVisible: true,
+                                     theme: 'a',
+                                     textonly: true,
+                                     html: "<img src='ajax-loader.gif' />&nbsp;&nbsp;&nbsp;&nbsp;Sending...."
+                                     });
+                    
+                    $.post("http://www.websoftmagic.com/mobile/bhcc/requestappointment.php",
+                    //$.post("requestappointment.php",
+                           {
+                           name2:name2,
+                           tel:tel,
+                           newpat:newpat,
+                           email:email,
+                           datepicker:datepicker,
+                           timea:timea,
+                           doctor:doctor,
+                           textarea2:textarea2
+                           },
+                           function(data,status){
+                           
+                           $.mobile.loading( 'hide' );
+                           if (status == "success") {
+                           //alert(data);
+                           var url = "index.html#thankyou";
+                           window.location = url;
+                           //alert ("Thank you!");
+                           } else {
+                           alert ("Sorry, I could not send the request, please call us");
+                           }
+                           });
+                }
+                </script>
+            
+            
+            <div data-role="header" data-theme="a">
+                
+                <a href="#one" data-icon="home" data-transition="pop">Back</a>
+                <h1></h1>
+                
+            </div>
+            
+            <div data-role="content">
+                <div align="center"><img alt="" src="bhcc-sign.jpg" height="130" width="300"></div>
+                
+                <center><h2>Request Appointment</h2></center>
+                
+                <form>
+                    <div class="ui-body ui-body-a">
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-type="horizontal">
+                                <legend>New Patient?</legend>
+                                <input type="radio" name="radio-view" id="radio-view-a" value="list"  checked="checked"/>
+                                <label for="radio-view-a">Existing</label>
+                                <input type="radio" name="radio-view" id="radio-view-b" value="grid"  />
+                                <label for="radio-view-b">New</label>
+                                
+                            </fieldset>
+                        </div>
+                        
+                    </div>
+					
+                    
+                    <ul data-role="listview" data-inset="true">
+                        <li data-role="fieldcontain">
+                            <label for="datepicker">Requested Date:</label>
+                            <input name="datepicker" id="datepicker" value="" data-clear-btn="true" type="text">
+                                </li>
+                        <li data-role="fieldcontain" >
+                            <label for="timea" class="select">Requested Time:</label>
+                            <select name="timea" id="timea">
+                                <option value="unknown">Appointment Time</option>
+                                <option value="8:00 AM">8:00 AM</option>
+                                <option value="8:30 AM">8:30 AM</option>
+                                <option value="9:00 AM">9:00 AM</option>
+                                <option value="9:30 AM">9:30 AM</option>
+                                <option value="10:00 AM">10:00 AM</option>
+                                <option value="10:30 AM">10:30 AM</option>
+                                <option value="11:00 AM">11:00 AM</option>
+                                <option value="11:30 AM">11:30 AM</option>
+                                <option value="12:00 PM">12:00 PM</option>
+                                <option value="12:30 PM">12:30 PM</option>
+                                <option value="1:00 PM">1:00 PM</option>
+                                <option value="1:30 PM">1:30 PM</option>
+                                <option value="2:00 PM">2:00 PM</option>
+                                <option value="2:30 PM">2:30 PM</option>
+                                <option value="3:00 PM">3:00 PM</option>
+                                <option value="3:30 PM">3:30 PM</option>
+                                <option value="4:00 PM">4:00 PM</option>
+                                <option value="4:30 PM">4:30 PM</option>
+                                <option value="5:00 PM">5:00 PM</option>
+                                <option value="5:30 PM">5:30 PM</option>
+                                
+                                
+                            </select>
+                        </li>
+                        <li data-role="fieldcontain">
+                            <label for="name2">Name:</label>
+                            <input name="name2" id="name2" value="" data-clear-btn="true" type="text">
+                                </li>
+                        <li data-role="fieldcontain">
+                            <label for="tel">Telephone:</label>
+                            <input name="tel" id="tel" value="" data-clear-btn="true" type="text">
+                                </li>
+                        <li data-role="fieldcontain">
+                            <label for="email">Email:</label>
+                            <input name="email" id="email" value="" data-clear-btn="true" type="text">
+                                </li>
+                        
+                        
+                        <li data-role="fieldcontain" >
+                            <label for="doctor" class="select">Doctor:</label>
+                            <select data-theme="e" name="doctor" id="doctor">
+                                <option value="Not Entered">Select Doctor</option>
+                                <option value="Linnea I. Chap, M.D.">Linnea I. Chap, M.D.</option>
+                                <option value="A. Eli Gabayan, M.D.">A. Eli Gabayan, M.D.</option>
+                                <option value="Steven J. O Day, M.D.">Steven J. O Day, M.D.</option>
+                                <option value="Ari Gabayan, M.D.">Ari Gabayan, M.D.</option>
+                                <option value="Patricia Gordon, MD">Patricia Gordon, MD</option>
+                                <option value="Paul Pagnini, MD">Paul Pagnini, MD</option>
+                                <option value="Lindi Vanderwalde, M.D.">Lindi Vanderwalde, M.D.</option>
+                                <option value="Jennifer Lang, M.D.">Jennifer Lang, M.D.</option>
+                                
+                                
+                            </select>
+                        </li>
+                        <li data-role="fieldcontain">
+                            <label for="textarea2">Comments:</label>
+                            <textarea cols="40" rows="8" name="textarea2" id="textarea2"></textarea>
+                        </li>
+                        
+                    </ul>
+                </form>
+                <center><button onclick="myFunction()" data-theme="a">Send Appointment Request</button></center>
+                
+            </div><!-- /content -->
+            <center><div data-role="footer" style="text-align:center;" class="ui-bar" data-id="myfooter" data-position="fixed" data-theme="a">
+                <a href="tel:18773510088" data-role="button" data-icon="gear">Click to Call</a>
+                <a href="mailto:info@bhcancercenter.com" data-role="button" data-icon="bars">Email Us</a>
+            </div></center>
+            <!-- /footer -->
+        </div><!-- /page -->
+        
+        <!-- Start of mymap page: #mymap -->
+        <div data-role="page" id="mymap">
+            
+            <div data-role="header">
+                <a href="#one" data-icon="home" data-transition="pop">Back</a>
+                <h1></h1>
+            </div><!-- /header -->
+            
+            <div data-role="content" data-theme="a" >
+                
+                <br>
+            	<div align="center"><img alt="" src="bhcc-sign.jpg" height="130" width="300"></div>
+            	<br>
+                <div align="center">
+                    <br>
+                </div>
+                <b>The Beverly Hills Cancer Center - Beverly Hills California<br></b>
+                
+                
+                <br>8900 Wilshire Boulevard
+                
+                <br>Beverly Hills, California 90211
+                <br>(877) 351-0088
+                <br><br>
+                <b>Directions</b><br>
+                <br>Beverly Hills Cancer Center is conveniently located in Los Angeles County, California. Our main facility is located in Beverly Hills, CA. The Los Angeles Skin Cancer Institute is located at the Beverly Hills Cancer Center in Beverly Hills, California.  We have valet parking for all patients.
+                <br><br>
+                
+                
+                <br>
+                <center><a rel="external" href="#directions" data-role="button" data-inline="true" data-icon="gear">Driving Directions</a><a rel="external" href="bhccmap1.html" data-role="button" data-inline="true" data-icon="gear" data-ajax="false">Map for BH Cancer Center</a></center>
+                
+                
+                
+            </div><!-- /content -->
+            <center><div data-role="footer" style="text-align:center;" class="ui-bar" data-id="myfooter" data-position="fixed" data-theme="a">
+                <a href="tel:18773510088" data-role="button" data-icon="gear">Click to Call</a>
+                <a href="mailto:info@bhcancercenter.com" data-role="button" data-icon="bars">Email Us</a>
+            </div></center>
+            <!-- /footer -->
+        </div><!-- /page mymap -->
+        
+        <!-- Start of directions page: #directions -->
+        <div data-role="page" id="directions" data-theme="b">
+            
+            <link href="https://google-developers.appspot.com/maps/documentation/javascript/examples/default.css" rel="stylesheet">
+                <style>
+                    #directions-panel {
+                        height: 100%;
+                        float: left;
+                        width: 390px;
+                        overflow: auto;
+                    }
+                    
+                    #map-canvas {
+                        margin-right: 400px;
+                    }
+                    
+                    #control {
+                        background: #000;
+                        padding: 5px;
+                        font-size: 14px;
+                        font-family: Arial;
+                        border: 1px solid #ccc;
+                        box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
+                        display: none;
+                    }
+                    
+                    @media print {
+                        #map-canvas {
+                            height: 500px;
+                            margin: 0;
+                        }
+                        
+                        #directions-panel {
+                            float: none;
+                            width: auto;
+                        }
+                    }
+                    </style>
+                <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+                <script>
+                    var directionDisplay;
+                    var directionsService = new google.maps.DirectionsService();
+                    
+                    function initialize() {
+                        directionsDisplay = new google.maps.DirectionsRenderer();
+                        var mapOptions = {
+                            zoom: 7,
+                            mapTypeId: google.maps.MapTypeId.ROADMAP,
+                            center: new google.maps.LatLng(41.850033, -87.6500523)
+                        };
+                        //var map = new google.maps.Map(document.getElementById('map-canvas'),
+                        //    mapOptions);
+                        //directionsDisplay.setMap(map);
+                        directionsDisplay.setPanel(document.getElementById('directions-panel'));
+                        
+                        var control = document.getElementById('control');
+                        control.style.display = 'block';
+                        map.controls[google.maps.ControlPosition.TOP].push(control);
+                        
+                    }
+                    
+                    function calcRoute() {
+                        $.mobile.loading( 'show', {
+                                         text: "",
+                                         textVisible: true,
+                                         theme: 'a',
+                                         textonly: true,
+                                         html: "<img src='ajax-loader.gif' />&nbsp;&nbsp;&nbsp;&nbsp;Loading...."
+                                         });
+                        
+                        var start = document.getElementById('start').value;
+                        //var end = document.getElementById('end').value;
+                        var end = "8900 Wilshire Boulevard 90211";
+                        var request = {
+                            origin: start,
+                            destination: end,
+                            travelMode: google.maps.DirectionsTravelMode.DRIVING
+                        };
+                        directionsService.route(request, function(response, status) {
+                                                
+                                                
+                                                if (status == google.maps.DirectionsStatus.OK) {
+                                                directionsDisplay.setDirections(response);
+                                                }
+                                                $.mobile.loading( 'hide' );
+                                                });
+                        
+                        
+                    }
+                    
+                    
+                    google.maps.event.addDomListener(window, 'load', initialize);
+                    
+                    
+                    </script>
+                
+                
+                <div data-role="header">
+                    <a href="#mymap" data-icon="home" data-transition="pop">Back</a>
+                    <h1></h1>
+                </div><!-- /header -->
+                
+                <div data-role="content"  >	
+                    
+                    
+                    
+                    <div align="center"><big><br>
+                    </big></div>
+                    <big> </big>
+                    <div align="center"><big><big><b>Directions to The Beverly Hills Cancer Center</b><br>
+                        <b></b></big></big><br>
+                    </div>
+                    <br>
+                    <br>
+                    <table border="0" cellpadding="2" cellspacing="2" width="80%">
+                        <tbody>
+                            <tr>
+                                <td align="right" valign="top"><strong>Enter Your Address:</strong></td>
+                                <td  valign="top"><input id="start" type="text"> </td>
+                            </tr>
+                            
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td valign="top"><br>
+                                </td>
+                                <td valign="top">
+                                    <a href="javascript:calcRoute()" data-role="button" data-theme="c">Get Directions</a>
+                                    
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    
+                    
+                    
+                    
+                    <div id="directions-panel"></div>
+                    
+                    
+                </div><!-- /content -->
+                <center><div data-role="footer" style="text-align:center;" class="ui-bar" data-id="myfooter" data-position="fixed" data-theme="a">
+                    <a href="tel:18773510088" data-role="button" data-icon="gear">Click to Call</a>
+                    <a href="mailto:info@bhcancercenter.com" data-role="button" data-icon="bars">Email Us</a>
+                </div></center>
+                <!-- /footer -->
+                </div><!-- /page directions -->
+        
+        <!-- Start of login page: #login -->
+        <div data-role="page" id="login" data-theme="a">
+            
+            <div data-role="header">
+                <a href="#one" data-icon="home" data-transition="pop">Back</a>
+                <h1></h1>
+            </div><!-- /header -->
+            
+            <script>
+                function LoginNow()
+                {
+                    var message = "";
+                    var username = $('#username').val();
+                    var password = $('#password').val();
+                    if (username==null || username=="") { message = message + "User Name must be entered\n"; }
+                    if (password==null || password=="") { message = message + "Password must be entered\n"; }
+                    if (message != "") {
+                        alert(message);
+                        return false;
+                    }
+                    
+                    
+                    
+                    $.mobile.loading( 'show', {
+                                     text: "",
+                                     textVisible: true,
+                                     theme: 'a',
+                                     textonly: true,
+                                     html: "<img src='ajax-loader.gif' />&nbsp;&nbsp;&nbsp;&nbsp;Logging In...."
+                                     });
+                    $.post("http://www.websoftmagic.com/mobile/angeles/loginnow.php",
+                    //$.post("loginnow.php",
+                           {
+                           username:username,
+                           password:password
+                           },
+                           function(data,status){
+                           //alert("got->" + data);
+                           
+                           $.mobile.loading( 'hide' );
+                           
+                           if (status == "success") {
+                           if (data == "ok") {
+                           GetAppointments();
+                           //alert("You now can access your personal information from the main menu.");
+                           //var url = "index.html";
+                           //window.location = url;
+                           return false;
+                           }
+                           alert("Sorry that Username and Password was invalid");
+                           } else {
+                           alert ("Sorry, I could not send the request, please call us");
+                           }
+                           });  
+                }
+                </script>
+            
+            
+            <div data-role="content" >	
+                <div align="center"><img alt="" src="bhcc-sign.jpg" height="130" width="300"></div>
+                
+                <center><h2>My BHCC Account</h2></center>
+                <form>
+                    <ul data-role="listview" data-inset="true">
+                        <li data-role="fieldcontain">
+                            <label for="username">User Name:</label>
+                            <input name="username" id="username" value="" data-clear-btn="true" type="text">
+                                </li>
+                        <li data-role="fieldcontain">
+                            <label for="password">Password:</label>
+                            <input name="password" id="password" value="" data-clear-btn="true" type="password">
+                                </li>
+                        <li class="ui-body ui-body-b">
+                            <fieldset class="ui-grid-a">
+                                
+                                
+                            </fieldset>
+                        </li>
+                    </ul>
+                </form>
+                <center><button onclick="LoginNow()" data-theme="e">Login to My Information</button></center>
+                
+            </div><!-- /content -->
+            <center><div data-role="footer" style="text-align:center;" class="ui-bar" data-id="myfooter" data-position="fixed" data-theme="a">
+                <a href="tel:18773510088" data-role="button" data-icon="gear">Click to Call</a>
+                <a href="mailto:info@bhcancercenter.com" data-role="button" data-icon="bars">Email Us</a>
+            </div></center>
+            <!-- /footer -->
+        </div><!-- /page login -->
+        
+        
+    </body>
+</html>

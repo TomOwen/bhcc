@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+            <title>The Angeles Clinic</title>
+            <link href="https://maps.googleapis.com/maps/documentation/javascript/examples/default.css" rel="stylesheet">
+                <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+                <script>
+                    var santamonica = new google.maps.LatLng(34.029367,-118.480092);
+                    var wilshire = new google.maps.LatLng(34.047319,-118.463023);
+                    var marker;
+                    var marker2;
+                    var map;
+                    
+                    function initialize() {
+                        var mapOptions = {
+                            zoom: 13,
+                            mapTypeId: google.maps.MapTypeId.ROADMAP,
+                            center: wilshire,
+                            zoomControl: true,
+                            zoomControlOptions: {
+                                style: google.maps.ZoomControlStyle.SMALL
+                            }
+                        };
+                        
+                        map = new google.maps.Map(document.getElementById('map-canvas'),
+                                                  mapOptions);
+                        var popsanta = '<div id="content">'+
+                        '<div id="siteNotice">'+
+                        '</div>'+
+                        '<h3 id="firstHeading" class="firstHeading">The Angeles Clinic and Research Institute<br>Santa Monica Office</h3>'+
+                        '<div id="bodyContent">'+
+                        '<p><b>2001 Santa Monica Boulevard, Suite 560W</b></p>' +
+                        '<p><b>Santa Monica, California 90404</b></p>' +
+                        '<a href="tel:13105827900">Call (310) 582-7900</a>' +
+                        '</div>'+
+                        '</div>';
+                        
+                        var popwilshire = '<div id="content">'+
+                        '<div id="siteNotice">'+
+                        '</div>'+
+                        '<h3 id="firstHeading" class="firstHeading">The Angeles Clinic and Research Institute<br>Wilshire Office</h3>'+
+                        '<div id="bodyContent">'+
+                        '<p><b>11818 Wilshire Boulevard</b></p>' +
+                        '<p><b>Los Angeles, CA 90025</b></p>' +
+                        '<a href="tel:13105827900">Call (310) 582-7900</a>' +
+                        '</div>'+
+                        '</div>';
+                        var infowindow = new google.maps.InfoWindow({
+                                                                    content: popwilshire
+                                                                    });
+                        var infowindow2 = new google.maps.InfoWindow({
+                                                                     content: popsanta
+                                                                     });
+                        
+                        marker = new google.maps.Marker({
+                                                        map:map,
+                                                        draggable:true,
+                                                        animation: google.maps.Animation.DROP,
+                                                        position: wilshire,
+                                                        title: 'Wilshire Office'
+                                                        });
+                        google.maps.event.addListener(marker, 'click', function() {
+                                                      infowindow.open(map,marker);
+                                                      });
+                        marker2 = new google.maps.Marker({
+                                                         map:map,
+                                                         draggable:true,
+                                                         animation: google.maps.Animation.DROP,
+                                                         position: santamonica,
+                                                         title: 'Santa Monica Office'
+                                                         });
+                        google.maps.event.addListener(marker2, 'click', function() {
+                                                      infowindow2.open(map,marker2);
+                                                      });
+                    }
+                    </script>
+                </head>
+    <body onload="initialize()">
+        <div id="map-canvas" style="width: 300px; height: 400px;">map div</div>
+    </body>
+</html>

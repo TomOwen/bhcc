@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+ 
+ http://www.apache.org/licenses/LICENSE-2.0
+ 
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
+        <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
+        
+        <link href="https://maps.googleapis.com/maps/documentation/javascript/examples/default.css" rel="stylesheet">
+            <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+            
+            
+            <script>
+                var bhcc = new google.maps.LatLng(34.066696,-118.385917);
+                var santamonica = new google.maps.LatLng(34.029367,-118.480092);
+                var wilshire = new google.maps.LatLng(34.047319,-118.463023);
+                var marker;
+                var marker2;
+                var map;
+                
+                function initialize2() {
+                    
+                    var mapOptions = {
+                        zoom: 13,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP,
+                        center: bhcc,
+                        zoomControl: true,
+                        zoomControlOptions: {
+                            style: google.maps.ZoomControlStyle.SMALL
+                        }
+                    };
+                    
+                    var sheight = screen.height - 50;
+                    var swidth  = screen.width - 60;
+                    var screen1 = "width:" + swidth + "px ; height: " + swidth + "px;";
+                    //screen1 = "width:50%; height:50%;";
+                    document.getElementById('map-canvas').setAttribute("style",screen1);
+                    map = new google.maps.Map(document.getElementById('map-canvas'),
+                                              mapOptions);
+                    var popbhcc = '<div id="content">'+
+                    '<b>Beverly Hills Cancer Center</b>'+
+                    '<br>8900 Wilshire Boulevard<br>'+
+                    ' Beverly Hills, California 90211' +
+                    '<br>Call (877) 351-0088' +
+                    '<br></div>';
+                    
+                    
+                    var infowindow = new google.maps.InfoWindow({
+                                                                content: popbhcc,
+                                                                maxWidth:300
+                                                                });
+                    
+                    
+                    
+                    marker2 = new google.maps.Marker({
+                                                     map:map,
+                                                     draggable:true,
+                                                     animation: google.maps.Animation.DROP,
+                                                     position: bhcc,
+                                                     title: 'Beverly Hills Cancer Center'
+                                                     });
+                    google.maps.event.addListener(marker2, 'click', function() {
+                                                  infowindow.open(map,marker2);
+                                                  });
+                    
+                    $('#spinner').toggle();
+                }
+                </script>
+            
+            
+            <title>The Beverly Hills Cancer Center</title>
+            </head>
+    <body onload="initialize2()">
+        <script type="text/javascript" src="http://www.websoftmagic.com/mobile/js/cordova-2.5.0.js"></script>
+        <script type="text/javascript" src="http://www.websoftmagic.com/mobile/js/index.js"></script>
+        
+        <div data-role="header" data-theme="b">
+        	<a href="index.html#mymap" data-icon="home" data-ajax="false">Back</a>
+            
+            <h1><img id="spinner" src="spinner_squares_circle.gif"  /></h1>
+            
+        </div>
+        <div data-role="content" data-theme="b">
+            <div data-role="content">
+                <div id="map-canvas" >map</div>
+            </div>
+            
+        </div>
+        
+        <center><div data-role="footer" class="ui-bar" data-id="myfooter" data-position="fixed" data-theme="a">
+            <a href="tel:18773510088" data-role="button" data-icon="gear">Click to Call</a>
+            <a href="mailto:info@bhcancercenter.com" data-role="button" data-icon="bars">Email Us</a>
+        </div></center>
+    </body>
+</html>
